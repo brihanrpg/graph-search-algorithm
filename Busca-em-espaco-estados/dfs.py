@@ -32,7 +32,6 @@ def dfs(labirinto):
                 if vizinho not in nosVisitados and vizinho not in fronteira:
                     fronteira.append(vizinho)
                     dfsPath[vizinho]=vertice
-                
 
     fwdPath={}
     cell=labirinto._goal
