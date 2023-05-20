@@ -4,7 +4,7 @@ from bfs import *
 from dfs import *
 from aStar import *
 
-def execucaoMaze(tamanho=30, possibilidadeCaminhos=10, algoritmo="aStar"):
+def execucaoMaze(tamanho=30, possibilidadeCaminhos=100, algoritmo="aStar"):
     
     goalX, goalY = randint(1,tamanho), 1
     
@@ -43,4 +43,4 @@ def execucaoMaze(tamanho=30, possibilidadeCaminhos=10, algoritmo="aStar"):
 
 
 if __name__=='__main__':
-    execucaoMaze(tamanho=10, algoritmo="aStar")
+    execucaoMaze(tamanho=100, algoritmo="aStar")
