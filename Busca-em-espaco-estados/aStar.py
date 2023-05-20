@@ -19,7 +19,6 @@ def a_star(labirinto):
     while fronteira != []:
         # Ordenar a fronteira pelo custo acumulado para garantir que o caminho mais promissor seja explorado primeiro
         fronteira.sort(key=lambda x: cost(x))
-
         vertice = fronteira.pop(0)
         nosVisitados.append(vertice)
 
