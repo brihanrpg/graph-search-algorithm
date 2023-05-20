@@ -1,4 +1,3 @@
-
 import random
 
 def bfs(labirinto):
@@ -34,7 +33,6 @@ def bfs(labirinto):
                     fronteira.append(vizinho)
                     bfsPath[vizinho]=vertice
                 
-
     fwdPath={}
     cell=labirinto._goal
     while cell != inicio:
