@@ -3,6 +3,7 @@ from random import randint
 from bfs import *
 from dfs import *
 from aStar import *
+from custo import *
 
 def execucaoMaze(tamanho=30, possibilidadeCaminhos=100, algoritmo="aStar"):
     
