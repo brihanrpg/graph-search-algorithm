@@ -1,6 +1,6 @@
 import random
 
-def a_star(labirinto):
+def custo(labirinto):
     inicio = (labirinto.rows, labirinto.cols)
     fronteira=[]
     nosVisitados=[]
@@ -8,13 +8,13 @@ def a_star(labirinto):
     aStarPath={}
 
     # Função heurística (distância em linha reta até o objetivo)
-    def heuristic(cell):
-        goal = labirinto._goal
-        return abs(cell[0] - goal[0]) + abs(cell[1] - goal[1])
+    # def heuristic(cell):
+    #     goal = labirinto._goal
+    #     return abs(cell[0] - goal[0]) + abs(cell[1] - goal[1])
 
     # Custo acumulado (distância percorrida desde o início)
     def cost(cell):
-        return len(aStarPath) + heuristic(cell)
+        return len(aStarPath)
 
     while fronteira != []:
         # Ordenar a fronteira pelo custo acumulado para garantir que o caminho mais promissor seja explorado primeiro

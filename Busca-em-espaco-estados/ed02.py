@@ -13,8 +13,8 @@ def execucaoMaze(tamanho=30, possibilidadeCaminhos=100, algoritmo="aStar"):
     m.CreateMaze(goalX, goalY, loopPercent=possibilidadeCaminhos)
     
     # Inclusao do agente no ambiente
-    a = agent(m,footprints=True, shape="arrow")
-    b = agent(m,footprints=True, color='red', filled=True)
+    a = agent(m,footprints=True, shape="arrow", color='red')
+    b = agent(m,footprints=True, color='blue', filled=True)
 
     #m.run()
 
@@ -31,9 +31,14 @@ def execucaoMaze(tamanho=30, possibilidadeCaminhos=100, algoritmo="aStar"):
             if algoritmo == 'aStar':
                 print("Executando a busca A*")
                 path1 = a_star(m)
-                path2= a_star(m)
+                path2 = a_star(m)
             else:
-                path = m.path
+                if algoritmo == 'custo':
+                    print("Executando a busca custo minimo")
+                    path1 = custo(m)
+                    path2 = custo(m)
+                else:
+                    path = m.path
 
   
     m.tracePath({a:path1, b:path2})
