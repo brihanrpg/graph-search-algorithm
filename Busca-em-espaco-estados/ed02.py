@@ -5,7 +5,7 @@ from dfs import *
 from aStar import *
 from custo import *
 
-def execucaoMaze(tamanho=30, possibilidadeCaminhos=100, algoritmo="aStar"):
+def execucaoMaze(tamanho=30, possibilidadeCaminhos=100, algoritmo="custo"):
     
     goalX, goalY = randint(1,tamanho), 1
     
@@ -38,15 +38,17 @@ def execucaoMaze(tamanho=30, possibilidadeCaminhos=100, algoritmo="aStar"):
                     path1 = custo(m)
                     path2 = custo(m)
                 else:
-                    path = m.path
+                    if algoritmo == 'befirst':
+                        print("Executando a busca Be-First")
+                        # path1 = befirst(m)
+                        # path2 = befirst(m)
+                    else:
+                        path = m.path
 
   
     m.tracePath({a:path1, b:path2})
     m.run()
 
 
-
-
-
 if __name__=='__main__':
-    execucaoMaze(tamanho=100, algoritmo="aStar")
+    execucaoMaze(tamanho=100, algoritmo="custo")
