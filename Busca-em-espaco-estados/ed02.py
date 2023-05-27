@@ -35,8 +35,8 @@ def execucaoMaze(tamanho=30, possibilidadeCaminhos=100, algoritmo="custo"):
             else:
                 if algoritmo == 'custo':
                     print("Executando a busca custo minimo")
-                    path1 = custo(m)
-                    path2 = custo(m)
+                    path1 = busca_custo_minimo(m)
+                    path2 = busca_custo_minimo(m)
                 else:
                     if algoritmo == 'befirst':
                         print("Executando a busca Be-First")
