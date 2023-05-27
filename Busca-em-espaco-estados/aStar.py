@@ -15,6 +15,8 @@ def a_star(labirinto):
     # Custo acumulado (distância percorrida desde o início)
     def cost(cell):
         return len(aStarPath) + heuristic(cell)
+    
+    distancia_total = 0
 
     while fronteira != []:
         # Ordenar a fronteira pelo custo acumulado para garantir que o caminho mais promissor seja explorado primeiro
@@ -43,10 +45,25 @@ def a_star(labirinto):
                 if vizinho not in nosVisitados and vizinho not in fronteira:
                     fronteira.append(vizinho)
                     aStarPath[vizinho] = vertice
+                    distancia_total += 1
 
     fwdPath = {}
     cell = labirinto._goal
     while cell != inicio:
         fwdPath[aStarPath[cell]] = cell
         cell = aStarPath[cell]
+
+    print("Caminho percorrido: ", distancia_total)
+
+    # caminhoTotal =[]
+    # cell = inicio
+    # caminhoTotal.append(cell)
+    # while cell != labirinto._goal:
+    #     cell = fwdPath[cell]
+    #     caminhoTotal.append(cell)
+    
+    # print("Caminho percorrido: ", distancia_total)
+    # for cell in caminhoTotal:
+    #     print(cell)
+    
     return fwdPath
