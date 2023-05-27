@@ -7,6 +7,8 @@ def bfs(labirinto):
     fronteira.append(inicio)
     bfsPath={}
 
+    distancia_total = 0
+
     while fronteira !=[]:
         vertice=fronteira.pop(0)
         nosVisitados.append(vertice)
@@ -32,7 +34,9 @@ def bfs(labirinto):
                 if vizinho not in nosVisitados and vizinho not in fronteira:
                     fronteira.append(vizinho)
                     bfsPath[vizinho]=vertice
-                
+                    distancia_total += 1
+    
+    print("Caminho percorrido: ", distancia_total)
     fwdPath={}
     cell=labirinto._goal
     while cell != inicio:

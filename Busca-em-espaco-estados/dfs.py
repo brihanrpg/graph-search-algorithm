@@ -7,6 +7,8 @@ def dfs(labirinto):
     fronteira.append(inicio)
     dfsPath={}
 
+    distancia_total = 0
+    
     while fronteira !=[]:
         vertice=fronteira.pop()  # Alteração: Usamos pop() em vez de pop(0) para retirar o último elemento da lista
         nosVisitados.append(vertice)
@@ -32,6 +34,9 @@ def dfs(labirinto):
                 if vizinho not in nosVisitados and vizinho not in fronteira:
                     fronteira.append(vizinho)
                     dfsPath[vizinho]=vertice
+                    distancia_total += 1
+
+    print("Caminho percorrido: ", distancia_total)
 
     fwdPath={}
     cell=labirinto._goal

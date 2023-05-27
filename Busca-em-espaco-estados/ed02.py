@@ -5,7 +5,7 @@ from dfs import *
 from aStar import *
 from custo import *
 
-def execucaoMaze(tamanho=30, possibilidadeCaminhos=100, algoritmo="custo"):
+def execucaoMaze(tamanho=30, possibilidadeCaminhos=50, algoritmo="bfs"):
     
     goalX, goalY = randint(1,tamanho), 1
     
@@ -51,4 +51,4 @@ def execucaoMaze(tamanho=30, possibilidadeCaminhos=100, algoritmo="custo"):
 
 
 if __name__=='__main__':
-    execucaoMaze(tamanho=100, algoritmo="custo")
+    execucaoMaze(tamanho=50, algoritmo="bfs")
