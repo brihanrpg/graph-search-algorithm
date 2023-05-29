@@ -51,4 +51,4 @@ def execucaoMaze(tamanho=30, possibilidadeCaminhos=50, algoritmo="bfs"):
 
 
 if __name__=='__main__':
-    execucaoMaze(tamanho=50, algoritmo="bfs")
+    execucaoMaze(tamanho=50, algoritmo="custo")
