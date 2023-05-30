@@ -21,14 +21,7 @@ def best_first(labirinto):
 
         for d in movimentos:
             if labirinto.maze_map[vertice][d]:
-                if d == 'E':
-                    vizinho = (vertice[0], vertice[1] + 1)
-                if d == 'W':
-                    vizinho = (vertice[0], vertice[1] - 1)
-                if d == 'N':
-                    vizinho = (vertice[0] - 1, vertice[1])
-                if d == 'S':
-                    vizinho = (vertice[0] + 1, vertice[1])
+                vizinho = calcular_vizinho(vertice, d)
 
                 if vizinho not in nosVisitados and vizinho not in fronteira:
                     fronteira.append(vizinho)
@@ -43,16 +36,23 @@ def best_first(labirinto):
     return fwdPath
 
 
-def heuristica(labirinto, vertice, direcao):
+def calcular_vizinho(vertice, direcao):
     if direcao == 'E':
         vizinho = (vertice[0], vertice[1] + 1)
-    if direcao == 'W':
+    elif direcao == 'W':
         vizinho = (vertice[0], vertice[1] - 1)
-    if direcao == 'N':
+    elif direcao == 'N':
         vizinho = (vertice[0] - 1, vertice[1])
-    if direcao == 'S':
+    elif direcao == 'S':
         vizinho = (vertice[0] + 1, vertice[1])
+    else:
+        raise ValueError("Direção inválida: " + direcao)
+    
+    return vizinho
 
+
+def heuristica(labirinto, vertice, direcao):
+    vizinho = calcular_vizinho(vertice, direcao)
     objetivo = labirinto._goal
     return distancia_euclidiana(vizinho, objetivo)
 

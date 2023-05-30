@@ -6,7 +6,7 @@ from aStar import a_star
 from custo import busca_custo_minimo
 from befirst import best_first
 
-def execucaoMaze(tamanho=30, possibilidadeCaminhos=10, algoritmo="custo"):
+def execucaoMaze(tamanho=30, possibilidadeCaminhos=10, algoritmo="dfs"):
     
     goalX, goalY = randint(1, tamanho), 1
     
@@ -48,4 +48,4 @@ def execucaoMaze(tamanho=30, possibilidadeCaminhos=10, algoritmo="custo"):
 
 
 if __name__=='__main__':
-    execucaoMaze(tamanho=30, algoritmo="custo")
+    execucaoMaze(tamanho=30, algoritmo="dfs")

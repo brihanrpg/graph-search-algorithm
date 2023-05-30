@@ -1,5 +1,6 @@
 import heapq
 import random
+from befirst import calcular_vizinho
 
 def busca_custo_minimo(labirinto):
     inicio = (labirinto.rows, labirinto.cols)
@@ -21,15 +22,7 @@ def busca_custo_minimo(labirinto):
 
         for d in movimentos:
             if labirinto.maze_map[vertice][d]:
-                if d == 'E':
-                    vizinho = (vertice[0], vertice[1] + 1)
-                if d == 'W':
-                    vizinho = (vertice[0], vertice[1] - 1)
-                if d == 'N':
-                    vizinho = (vertice[0] - 1, vertice[1])
-                if d == 'S':
-                    vizinho = (vertice[0] + 1, vertice[1])
-
+                vizinho = calcular_vizinho(vertice, d)
                 if vizinho not in nosVisitados:
                     novo_custo = custo + 1
                     heapq.heappush(fronteira, (novo_custo, vizinho))
