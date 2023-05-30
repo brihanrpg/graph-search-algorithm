@@ -48,9 +48,6 @@ def busca_custo_minimo(labirinto):
     for cell in reversed(caminho_percorrido):
         print(cell)
 
-# Exemplo de uso
-# Supondo que você tenha uma instância da classe Labirinto chamada 'labirinto'
-#busca_custo_minimo(labirinto)
 
 
 # import random
