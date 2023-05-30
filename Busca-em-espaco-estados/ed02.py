@@ -4,9 +4,9 @@ from bfs import bfs
 from dfs import dfs
 from aStar import a_star
 from custo import busca_custo_minimo
-from befirst import befirst
+from befirst import best_first
 
-def execucaoMaze(tamanho=30, possibilidadeCaminhos=50, algoritmo="bfs"):
+def execucaoMaze(tamanho=30, possibilidadeCaminhos=10, algoritmo="custo"):
     
     goalX, goalY = randint(1, tamanho), 1
     
@@ -37,8 +37,8 @@ def execucaoMaze(tamanho=30, possibilidadeCaminhos=50, algoritmo="bfs"):
         path2 = busca_custo_minimo(m)
     elif algoritmo == 'befirst':
         print("Executando a busca Be-First")
-        path1 = befirst(m)
-        path2 = befirst(m)
+        path1 = best_first(m)
+        path2 = best_first(m)
     else:
         path1 = m.path
         path2 = m.path
@@ -48,4 +48,4 @@ def execucaoMaze(tamanho=30, possibilidadeCaminhos=50, algoritmo="bfs"):
 
 
 if __name__=='__main__':
-    execucaoMaze(tamanho=50, algoritmo="bfs")
+    execucaoMaze(tamanho=30, algoritmo="custo")

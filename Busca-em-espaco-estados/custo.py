@@ -1,15 +1,15 @@
-from collections import deque
+import heapq
 import random
 
 def busca_custo_minimo(labirinto):
     inicio = (labirinto.rows, labirinto.cols)
-    fila = deque()
+    fronteira = []
     nosVisitados = set()
-    fila.append(inicio)
-    aStarPath = {}
+    heapq.heappush(fronteira, (0, inicio))
+    custoMinimoPath = {}
 
-    while fila:
-        vertice = fila.popleft()
+    while fronteira:
+        custo, vertice = heapq.heappop(fronteira)
         nosVisitados.add(vertice)
 
         if vertice == labirinto._goal:
@@ -31,82 +31,14 @@ def busca_custo_minimo(labirinto):
                     vizinho = (vertice[0] + 1, vertice[1])
 
                 if vizinho not in nosVisitados:
-                    fila.append(vizinho)
-                    aStarPath[vizinho] = vertice
+                    novo_custo = custo + 1
+                    heapq.heappush(fronteira, (novo_custo, vizinho))
+                    custoMinimoPath[vizinho] = vertice
 
-    caminho_percorrido = []
+    fwdPath = {}
     cell = labirinto._goal
-    caminho_percorrido.append(cell)
     while cell != inicio:
-        cell = aStarPath[cell]
-        caminho_percorrido.append(cell)
+        fwdPath[custoMinimoPath[cell]] = cell
+        cell = custoMinimoPath[cell]
 
-    distancia_total = len(caminho_percorrido) - 1
-
-    print("Distância total percorrida:", distancia_total)
-    print("Caminho percorrido:")
-    for cell in reversed(caminho_percorrido):
-        print(cell)
-
-
-
-# import random
-
-# # Custo acumulado (distância percorrida desde o início)
-
-
-# def custo(labirinto):
-#     inicio = (labirinto.rows, labirinto.cols)
-#     fronteira=[]
-#     nosVisitados=[]
-#     fronteira.append(inicio)
-#     custoPath={}
-
-#     def cost(cell):
-#      return custoPath[cell]
-
-#     while fronteira != []:
-#         # Ordenar a fronteira pelo custo acumulado para garantir que o caminho mais promissor seja explorado primeiro
-#         fronteira.sort(key=lambda x: x[1])
-#         vertice, custo_atual = fronteira.pop(0)
-#         nosVisitados.append(vertice)
-
-#         if vertice == labirinto._goal:
-#             print("Objetivo encontrado")
-#             break
-
-#         movimentos = ["E", "S", "N", "W"]
-#         random.shuffle(movimentos)
-
-#         for d in movimentos:
-#             if labirinto.maze_map[vertice][d] == True:
-#                 if d == 'E':
-#                     vizinho = (vertice[0], vertice[1] + 1)
-#                 if d == 'W':
-#                     vizinho = (vertice[0], vertice[1] - 1)
-#                 if d == 'N':
-#                     vizinho = (vertice[0] - 1, vertice[1])
-#                 if d == 'S':
-#                     vizinho = (vertice[0] + 1, vertice[1])
-
-#                 if vizinho not in nosVisitados:
-#                     if vizinho not in [x[0] for x in fronteira]:
-#                         fronteira.append((vizinho, custo_atual + 1))
-#                         custoPath[vizinho] = custo_atual + 1
-
-#     #Construção do caminho
-#     caminhoTotal = []
-#     cell = labirinto._goal
-#     caminhoTotal.append(cell)
-#     while cell != inicio:
-#         cell = custoPath[cell]
-#         caminhoTotal.append(cell)
-    
-#     print("Distancia percorrida:", len(caminhoTotal) - 1)
-
-#     fwdPath = {}
-#     cell = labirinto._goal
-#     while cell != inicio:
-#         fwdPath[custoPath[cell]] = cell
-#         cell = custoPath[cell]
-#     return fwdPath
+    return fwdPath
