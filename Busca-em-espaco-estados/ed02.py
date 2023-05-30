@@ -4,6 +4,7 @@ from bfs import *
 from dfs import *
 from aStar import *
 from custo import *
+from befirst import *
 
 def execucaoMaze(tamanho=30, possibilidadeCaminhos=50, algoritmo="bfs"):
     
@@ -40,8 +41,8 @@ def execucaoMaze(tamanho=30, possibilidadeCaminhos=50, algoritmo="bfs"):
                 else:
                     if algoritmo == 'befirst':
                         print("Executando a busca Be-First")
-                        # path1 = befirst(m)
-                        # path2 = befirst(m)
+                         path1 = befirst(m)
+                         path2 = befirst(m)
                     else:
                         path = m.path
 
